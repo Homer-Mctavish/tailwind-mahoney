@@ -1,1 +1,74 @@
 @import "tailwindcss";
+
+#background {
+    background-image: url('/replacement.png');
+}
+
+#footer{
+    background-image: url('/border.png')
+}
+#bod{
+    background-image: url('/border.png')
+}
+#blueby{
+    background-image: url('/replacement.png')
+}
+
+#terbil{
+    background-image: url('/border.png')
+}
+blockquote{
+    background-image: url('/replacement.png')
+}
+#foot1{
+    background-image: url('/replacement.png')
+}
+
+#foot2{
+    background-image: url('/replacement.png')
+}
+
+#headerc{
+    background-image: url('/second.png')
+}
+
+svg {
+    font-family: 'Arial', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+svg {
+    display: block;
+    margin: auto;
+}
+
+p{
+    color:#E2725B;
+}
+.font-bold{
+    color:#800020;
+}
+
+.text-gray-700{
+    color:#E2725B;
+}
+
+.text-gray-900{
+    color:#800020;
+}
+
+.font-extrabold{
+    color: #DAA520;
+}
+
+.order-last{
+    color: #CD7F32;
+}
+.transition{
+    color: #E2725B;
+}
+
+.block rounded-md {
+    color: #FFC300;
+}
