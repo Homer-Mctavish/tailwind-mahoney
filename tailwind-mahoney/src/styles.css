@@ -72,3 +72,21 @@ p{
 .block rounded-md {
     color: #FFC300;
 }
+
+
+.header-container {
+    width: 100%; /* Full width */
+    max-width: 1200px; /* Optional: Set a max width */
+    margin: 0 auto; /* Centering */
+    padding: 10px; /* Optional: Adjust padding */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa; /* Adjust as needed */
+}
+
+.header-logo {
+    width: 100%;
+    max-width: 300px; /* Adjust for different screen sizes */
+    height: auto; /* Maintain aspect ratio */
+}
