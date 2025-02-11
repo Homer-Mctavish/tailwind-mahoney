@@ -1,16 +1,37 @@
 @import "tailwindcss";
 
 
-svg {
-    font-family: 'Arial', sans-serif;
-    font-size: 50px;
-    font-weight: bold;
-}
 
 svg {
     display: block;
     margin: auto;
+    width:"550";
+    height:"60";
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
 }
+
+text{
+  x: "0"; 
+  font-size: "32";
+  fill: "#f8ca3c"; 
+  stroke: "#87CEEB";
+  font-family: "Arial";
+}
+
+    /* SVG text container positioned to the right of the buttons */
+    .svg-text {
+      position: absolute;
+      left: 130px; /* Adjust this value to move the SVG text horizontally */
+      top: 50%;
+      display:flex;
+      top:0;
+      bottom:0;
+      justify-content: center;
+      flex-direction: column;
+
+    }
+    
 
 button {
     gap: 10px;               /* Space between the buttons */
@@ -58,7 +79,7 @@ button {
       /* Center the div vertically and horizontally */
       body {
         margin: 0;
-        height: 100vh;
+        height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -86,11 +107,11 @@ button {
            - The first (inner) border: 4px thick, red (#ff0000)
            - The second (outer) border: 4px additional spread, green (#00ff00) */
         box-shadow: 0 0 0 4px #f8ca3c, 0 0 0 8px #87CEEB;        
-        transform: translate3d(-155px, -90px, 0);
+        transform: translate3d(-155px, -91px, 0);
         top: 1;
         bottom: 1;               /* Position at the bottom of the container */
-        width: 300px;            /* Overall width of the shape */
-        height: 150px;           /* Height is less than width to create an oblong shape */
+        width: 280%;            /* Overall width of the shape */
+        height: 490%;           /* Height is less than width to create an oblong shape */
         background: #3498db;     /* Background color of the half circle */
         /* Round the top corners to create a half circle shape */
         border-top-left-radius: 150px;
@@ -100,10 +121,10 @@ button {
         z-index: 0;
       }
           /* For WebKit browsers (Chrome, Safari) */
-    html::-webkit-scrollbar,
-    body::-webkit-scrollbar {
-      display: none;
-    }
+          html::-webkit-scrollbar,
+          body::-webkit-scrollbar {
+            display: none;
+          }
     
       html, body {
         overflow: hidden;              /* Prevent scrolling */
@@ -186,8 +207,8 @@ button {
       /* Background div styled as desired */
       .background-div {
         position: absolute;  /* Position absolutely within the container */
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         /* Example background styling: can be a color, image, or gradient */
         z-index: 0;  /* Lower z-index so it sits behind */
       }
@@ -198,13 +219,21 @@ button {
         background-image: url('/woodworkinggrey.webp'); /* Replace with your image path */
         position: relative;  /* Relative positioning so its z-index is in the same stacking context */
         z-index: 1;  
-        margin: auto;
-        max-width: 600px;
-        margin: 100px;
+        margin: 100px auto;      /* Centers horizontally */
         padding: 300px 300px;
         border-radius: 12px;
-        text-align: center;        
+        text-align: center;
+        max-width: 90%;          /* Ensure the div never exceeds 90% of the viewport width */        
       }
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+  .content-div {
+    margin: 50px auto;     /* Reduce top/bottom margin */
+    padding: 20px;         /* Reduce padding further */
+    transform: translateY(30px);
+  }
+}
 
     /* The gap element that overlaps the top border */
     .border-gap {
@@ -224,22 +253,10 @@ button {
       font-family: sans-serif;
     }
 
-        
-    /* SVG text container positioned to the right of the buttons */
-    .svg-text {
-        position: absolute;
-        left: 130px; /* Adjust this value to move the SVG text horizontally */
-        top: 50%;
-        display:flex;
-        top:0;
-        bottom:0;
-        justify-content: center;
-        flex-direction: column;
-
-      }
       
 
 .header-logo{
 
   transform: scale(3); /* Image is scaled to 120% of its original size */
 }
+
