@@ -74,15 +74,7 @@ button {
     opacity: 1;
   }
 
-      /* Center the div vertically and horizontally */
-      body {
-        margin: 0;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f0f0f0; /* light background for contrast */
-      }
+
   
       .double-border {
         
@@ -91,10 +83,9 @@ button {
         box-shadow: 0 0 0 4px #87CEEB;     /* Outer sky blue border effect */
         border-radius: 12px;             /* Rounded corners */
         padding: 20px;
-        height: 600px;              /* Increased width */
         text-align: center;
         font-family: sans-serif;
-        min-width: 600px;   /* The div won't shrink below 200px in width */
+        min-width: 500px;   /* The div won't shrink below 200px in width */
         min-height: 100px;  /* The div won't shrink below 100px in height */
         
       }
@@ -120,26 +111,9 @@ button {
         border-bottom-right-radius: 0;
         z-index: 0;
       }
-      /* A container to hold both the background and the foreground content */
-      .container {
-        position: relative;  /* Creates a positioning context for its children */
-        width: 100%;
-        height: 100%;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        box-sizing: border-box;
-      }
 
-          /* Optional: Hide scrollbars explicitly for WebKit and IE/Edge */
-    .container::-webkit-scrollbar {
-      display: none;
-    }
-    .container {
-      -ms-overflow-style: none;  /* IE and Edge */
-      scrollbar-width: none;     /* Firefox */
-    }
+
+
 .big-spacing{
     display: flex;
     flex-direction: column;
@@ -155,7 +129,6 @@ button {
   .new-line {
     display: block;
     position: relative;
-    
   }
   
 
@@ -163,9 +136,8 @@ button {
   .container::before {
     content: "";
     position: absolute;
-
-    width: 200%;
-    height: 200%;
+    width: 100vw;
+    height: 100vh;
     background: url('/civil-engineer-screew-svgrepo-com.svg'),
       radial-gradient(circle, transparent 10%, #3498db 20%);
     background-size: 30px 30px; /* Adjust the size of the pattern */
@@ -180,10 +152,7 @@ button {
       background-position: 30px 0;
     }
   }
-  
 
-      
-  
       /* Background div styled as desired */
       .background-div {
         position: fixed;  /* Position absolutely within the container */
@@ -197,7 +166,7 @@ button {
   
       /* Content div that will appear on top of the background */
       .content-div {
-        transform: translateY(70px);
+        transform: translateY(10px);
         background-image: url('/woodworkinggrey.webp'); /* Replace with your image path */
         z-index: 1;  
         margin:7% auto;      /* Centers horizontally */
@@ -227,15 +196,6 @@ button {
       font-size: 1rem;
       transform: translateY(-46.5vh);
     }
-
-    /* Optional: additional styling for the inner content */
-    .content {
-      margin-top: 20px;
-      font-family: sans-serif;
-    }
-
-      
-
 .header-logo{
 
   transform: scale(3); /* Image is scaled to 120% of its original size */
@@ -281,4 +241,92 @@ button {
   max-height: 400px;
   margin: 60px auto;
   
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Main container uses flex to create three columns */
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Base styles for each column */
+.left,
+.middle,
+.right {
+  padding: 10px;
+}
+
+
+
+/* Large & Medium screens: three columns in a row */
+@media (min-width: 768px) {
+  .left {
+    flex: 0 0 20%;       /* 20% of the width */
+    background-color: #f8d7da;
+    z-index: 1;
+  }
+  .middle {
+    flex: 0 0 60%;       /* 60% of the width */
+    justify-content: center; /* Centers child horizontally */
+    align-items: center;     /* Centers child vertically */
+  }
+  .right {
+    flex: 0 0 20%;       /* 20% of the width */
+    background-color: #d4edda;
+    z-index: 1;
+  }
+}
+
+/* Small screens: stack columns vertically */
+@media (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    height: auto; /* Let the container grow naturally */
+  }
+  .left, .middle, .right {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+
+/* Adaptive content within the middle div */
+.middle .large-content {
+  display: block;
+}
+.middle .medium-content,
+.middle .small-content {
+  display: none;
+}
+
+/* Medium screens: show alternative content */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .middle .large-content {
+    display: none;
+  }
+  .middle .medium-content {
+    display: block;
+  }
+}
+
+/* Small screens: show yet another variation */
+@media (max-width: 767px) {
+  .middle .large-content,
+  .middle .medium-content {
+    display: none;
+  }
+  .middle .small-content {
+    display: block;
+  }
 }

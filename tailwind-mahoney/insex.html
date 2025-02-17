@@ -2,85 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Essential meta tag for responsive design -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fade Transition Slideshow</title>
+  <title>Responsive 3-Column Layout with Adaptive Content</title>
   <style>
-    /* Slideshow viewport */
-    .slideshow-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      height: 400px;
-      margin: 20px auto;
-      overflow: hidden;
-      border: 2px solid #ccc;
-      border-radius: 8px;
+    /* Reset some defaults */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Each slide is positioned on top of each other */
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
+    html, body {
       height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      z-index: 0;
-    }
-    /* The active slide is visible */
-    .slide.active {
-      opacity: 1;
-      z-index: 1;
+      width: 100%;
     }
 
-    /* Navigation buttons container */
-    .nav-buttons {
-      text-align: center;
-      margin-top: 15px;
+    /* Main container uses flex to create three columns */
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100vh; /* Full viewport height */
     }
 
-    /* Style for each navigation button */
-    .nav-button {
-      display: inline-block;
-      width: 30px;
-      height: 30px;
-      margin: 0 5px;
-      background-color: #ccc;
-      border-radius: 50%;
-      cursor: pointer;
-      line-height: 30px;
-      font-size: 14px;
-      color: white;
-      transition: background-color 0.3s;
+    /* Base styles for each column */
+    .left,
+    .middle,
+    .right {
+      padding: 10px;
     }
-    .nav-button.active {
-      background-color: #3498db;
+
+    /* Large & Medium screens: three columns in a row */
+    @media (min-width: 768px) {
+      .left {
+        flex: 0 0 20%;       /* 20% of the width */
+        background-color: #f8d7da;
+      }
+      .middle {
+        flex: 0 0 60%;       /* 60% of the width */
+        background-color: #d1ecf1;
+        text-align: center;
+      }
+      .right {
+        flex: 0 0 20%;       /* 20% of the width */
+        background-color: #d4edda;
+      }
+    }
+
+    /* Small screens: stack columns vertically */
+    @media (max-width: 767px) {
+      .container {
+        flex-direction: column;
+        height: auto; /* Let the container grow naturally */
+      }
+      .left, .middle, .right {
+        flex: 1 1 auto;
+        width: 100%;
+      }
+    }
+
+    /* Adaptive content within the middle div */
+    .middle .large-content {
+      display: block;
+    }
+    .middle .medium-content,
+    .middle .small-content {
+      display: none;
+    }
+
+    /* Medium screens: show alternative content */
+    @media (max-width: 1023px) and (min-width: 768px) {
+      .middle .large-content {
+        display: none;
+      }
+      .middle .medium-content {
+        display: block;
+      }
+    }
+
+    /* Small screens: show yet another variation */
+    @media (max-width: 767px) {
+      .middle .large-content,
+      .middle .medium-content {
+        display: none;
+      }
+      .middle .small-content {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Slideshow container -->
-  <div class="slideshow-container">
-    <div class="slide active" style="background-image: url('https://via.placeholder.com/800x400/3498db/ffffff?text=Slide+1');">d</div>
-    <div class="slide" style="background-image: url('https://via.placeholder.com/800x400/2ecc71/ffffff?text=Slide+2');">k</div>
-    <div class="slide" style="background-image: url('https://via.placeholder.com/800x400/e74c3c/ffffff?text=Slide+3');">a</div>
-    <div class="slide" style="background-image: url('https://via.placeholder.com/800x400/f1c40f/ffffff?text=Slide+4');">r</div>
-    <div class="slide" style="background-image: url('https://via.placeholder.com/800x400/9b59b6/ffffff?text=Slide+5');">n</div>
+  <div class="container">
+    <div class="left">
+      Left Column<br>
+      (20% width)
+    </div>
+    <div class="middle">
+      Middle Column<br>
+      (60% width)
+      <div class="large-content">
+        <p>This content is visible on large screens.</p>
+      </div>
+      <div class="medium-content">
+        <p>This content is visible on medium screens.</p>
+      </div>
+      <div class="small-content">
+        <p>This content is visible on small screens (mobile).</p>
+      </div>
+    </div>
+    <div class="right">
+      Right Column<br>
+      (20% width)
+    </div>
   </div>
-
-  <!-- Navigation buttons -->
-  <div class="nav-buttons">
-    <span class="nav-button active" data-index="0">1</span>
-    <span class="nav-button" data-index="1">2</span>
-    <span class="nav-button" data-index="2">3</span>
-    <span class="nav-button" data-index="3">4</span>
-    <span class="nav-button" data-index="4">5</span>
-  </div>
-
-  <!-- Import external JavaScript -->
-  <script src="src/main.js"></script>
 </body>
 </html>
