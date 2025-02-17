@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-
-
 svg {
     display: block;
     margin: auto;
@@ -96,6 +94,8 @@ button {
         height: 600px;              /* Increased width */
         text-align: center;
         font-family: sans-serif;
+        min-width: 600px;   /* The div won't shrink below 200px in width */
+        min-height: 100px;  /* The div won't shrink below 100px in height */
         
       }
       .border-gap::before {
@@ -119,23 +119,6 @@ button {
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
         z-index: 0;
-      }
-          /* For WebKit browsers (Chrome, Safari) */
-          html::-webkit-scrollbar,
-          body::-webkit-scrollbar {
-            display: none;
-          }
-    
-      html, body {
-        overflow: hidden;              /* Prevent scrolling */
-        -ms-overflow-style: none;      /* IE and Edge */
-        scrollbar-width: none;         /* Firefox */
-        margin: 0;
-        padding: 0;
-        /* Hide any unintended horizontal scrollbars */
-        overflow-x: hidden;
-        box-sizing: border-box;
-        background-color: #333; /* For testing purposes */
       }
       /* A container to hold both the background and the foreground content */
       .container {
@@ -171,14 +154,11 @@ button {
 
   .new-line {
     display: block;
+    position: relative;
     
   }
   
-  .big-title {
-    font-size: 6rem;       /* Makes the text large */
-    font-weight: bold;     /* Makes the text bold */
-     /* Adds vertical spacing */
-  }
+
 
   .container::before {
     content: "";
@@ -206,9 +186,11 @@ button {
   
       /* Background div styled as desired */
       .background-div {
-        position: absolute;  /* Position absolutely within the container */
-        width: 100%;
-        height: 100%;
+        position: fixed;  /* Position absolutely within the container */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         /* Example background styling: can be a color, image, or gradient */
         z-index: 0;  /* Lower z-index so it sits behind */
       }
@@ -217,9 +199,8 @@ button {
       .content-div {
         transform: translateY(70px);
         background-image: url('/woodworkinggrey.webp'); /* Replace with your image path */
-        position: relative;  /* Relative positioning so its z-index is in the same stacking context */
         z-index: 1;  
-        margin: 100px auto;      /* Centers horizontally */
+        margin:7% auto;      /* Centers horizontally */
         padding: 300px 300px;
         border-radius: 12px;
         text-align: center;
@@ -237,14 +218,14 @@ button {
 
     /* The gap element that overlaps the top border */
     .border-gap {
-      position: absolute;
-      top: -4.5em;  /* Adjust the vertical position as needed */
-      left: 82%;
-      transform: translateX(-230px);
+      font-size: 6rem;       /* Makes the text large */
+      font-weight: bold;     /* Makes the text bold */
+      position: relative;
       background-color: transparent; /* Match the container background to "cut" a gap */
       padding: 0 10px;  /* Horizontal padding creates the gap width */
       font-family: sans-serif;
       font-size: 1rem;
+      transform: translateY(-46.5vh);
     }
 
     /* Optional: additional styling for the inner content */
@@ -260,3 +241,44 @@ button {
   transform: scale(3); /* Image is scaled to 120% of its original size */
 }
 
+.slide{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 0;
+}
+
+.slide.active{
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right:50;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 0;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  height: -100%;
+  max-width: 800px;
+  max-height: 400px;
+  margin: 60px auto;
+  
+}
