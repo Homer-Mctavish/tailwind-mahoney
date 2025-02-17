@@ -166,7 +166,8 @@ button {
   
       /* Content div that will appear on top of the background */
       .content-div {
-        transform: translateY(10px);
+        transform: translateY(10vh);
+        transform: translateX(3vw);
         background-image: url('/woodworkinggrey.webp'); /* Replace with your image path */
         z-index: 1;  
         margin:7% auto;      /* Centers horizontally */
