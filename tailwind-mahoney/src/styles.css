@@ -275,8 +275,11 @@ html, body {
 @media (min-width: 768px) {
   .left {
     flex: 0 0 20%;       /* 20% of the width */
-    background-color: #f8d7da;
+    background-color: #3498db;
+    border: 4px solid #f8ca3c;       /* Inner border matching the background */
+    border-radius: 12px;             /* Rounded corners */
     z-index: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
   }
   .middle {
     flex: 0 0 60%;       /* 60% of the width */
@@ -285,8 +288,11 @@ html, body {
   }
   .right {
     flex: 0 0 20%;       /* 20% of the width */
-    background-color: #d4edda;
+    background-color: #3498db;
+    border: 4px solid #f8ca3c;       /* Inner border matching the background */
+    border-radius: 12px;             /* Rounded corners */
     z-index: 1;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
   }
 }
 
@@ -330,4 +336,53 @@ html, body {
   .middle .small-content {
     display: block;
   }
+  .columns-container {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+  .doric-column {
+    flex: 0 0 80%;
+    margin-bottom: 2vh;
+  }
+  .image-square {
+    width: 15vw;
+    height: 9vw;
+  }
 }
+
+.column-body {
+  flex: 1;
+  /* Use a repeating linear gradient that goes to the right (vertical stripes) */
+  background: repeating-linear-gradient(
+    to right,
+    #87CEEB 0%,
+    #87CEEB 25%,
+    #f8ca3c 25%,
+    #f8ca3c 50%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; /* Evenly space the image boxes vertically */
+  align-items: center;
+  padding: 2vh 0;
+}
+
+    /* Image squares as placeholders – size relative to viewport width */
+    .image-square {
+      width: 16vw;             /* Approximately 40% of a 20vw column */
+      height: 10vw;          /* Maintain a 5:3 ratio */
+      background-color: #fff;
+      border: 0.3vw solid #000;
+      box-shadow: 0 0 0.3vw rgba(0,0,0,0.3);
+    }
+    
+    /* Each Doric column takes up 20% of the viewport width */
+    .doric-column {
+      flex: 0 0 20%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 0.5vh rgba(0,0,0,0.2);
+    }
+
+    
