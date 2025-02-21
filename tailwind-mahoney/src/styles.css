@@ -401,6 +401,44 @@ html, body {
       color: transparent;
     }
 
+
+    /* Base overlay styles: fill the viewport, show background image, and animate on transform */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      color: white;
+      font-family: sans-serif;
+      font-size: 10rem;
+      cursor: pointer;
+      transition: transform 0.8s ease;
+    }
+
+    /* The "Before" overlay on top of everything */
+    #overlay-before {
+      z-index: 1000;
+      /* background-image: url('/imagejpeg_0.jpg'); */
+      /* Place text at top-left */
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    /* The "After" overlay below */
+    #overlay-after {
+      z-index: 999;
+      /* background-image: url('/imagejpeg_02.jpg'); */
+      /* Place text at bottom-right */
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
         /* Animation classes to slide overlays out */
         .slide-out-left {
           transform: translateX(-100vw);
@@ -408,3 +446,21 @@ html, body {
         .slide-out-right {
           transform: translateX(100vw);
         }
+
+    /* Style for the text that pops */
+    .pop-out-text {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #FFF; /* White text for contrast */
+      text-align: center;
+      padding: 20px 40px;
+      
+      /* Add a text shadow for extra pop */
+      text-shadow: 
+        3px 3px 5px rgba(0,0,0,0.7),
+        -3px -3px 5px rgba(0,0,0,0.7);
+      
+      /* Alternatively, you can use a semi-transparent background behind the text */
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+    }
