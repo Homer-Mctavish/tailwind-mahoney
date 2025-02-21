@@ -385,4 +385,26 @@ html, body {
       box-shadow: 0 0 0.5vh rgba(0,0,0,0.2);
     }
 
-    
+    .imaginethat img{
+      width: 100%;       /* Fills container's width */
+      height: 100%;      /* Fills container's height */
+      object-fit: cover; /* Maintains aspect ratio while covering container 
+      */
+    }
+
+    .textcenter{
+      text-align: center;
+      font-size: 4rem;
+      font-weight: bold;
+      background: linear-gradient(to right, #87CEEB 50%, #f8ca3c 50%);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+        /* Animation classes to slide overlays out */
+        .slide-out-left {
+          transform: translateX(-100vw);
+        }
+        .slide-out-right {
+          transform: translateX(100vw);
+        }

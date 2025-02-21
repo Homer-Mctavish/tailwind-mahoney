@@ -21,3 +21,25 @@ navButtons.forEach(btn => {
   });
 });
 
+
+    // Get references to the overlay elements
+    const overlayBefore = document.getElementById('overlay-before');
+    const overlayAfter  = document.getElementById('overlay-after');
+
+    // When the "Before" overlay is clicked, slide it off to the left
+    overlayBefore.addEventListener('click', () => {
+      overlayBefore.classList.add('slide-out-left');
+      overlayBefore.addEventListener('transitionend', () => {
+        overlayBefore.style.display = 'none';
+      }, { once: true });
+    });
+
+    // When the "After" overlay is clicked, slide it off to the right
+    overlayAfter.addEventListener('click', () => {
+      overlayAfter.classList.add('slide-out-right');
+      overlayAfter.addEventListener('transitionend', () => {
+        overlayAfter.style.display = 'none';
+      }, { once: true });
+    });
+
+    
