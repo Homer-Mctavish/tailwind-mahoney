@@ -397,6 +397,7 @@ html, body {
       font-size: 4rem;
       font-weight: bold;
       background: linear-gradient(to right, #87CEEB 50%, #f8ca3c 50%);
+      background-clip:text;
       -webkit-background-clip: text;
       color: transparent;
     }
@@ -463,4 +464,9 @@ html, body {
       /* Alternatively, you can use a semi-transparent background behind the text */
       background: rgba(0, 0, 0, 0.5);
       border-radius: 10px;
+    }
+
+    .half-size-logo{
+      transform: scale(1.5); /* Image is scaled to 120% of its original size */
+
     }

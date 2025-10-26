@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Doric Columns & Slideshow</title>
+  <style>
+    /* Basic styles (assumed existing styles) */
+    .doric-column {
+      /* Original desktop styles may be defined here */
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+    }
+    .column-cap, .column-base {
+      height: 50px; /* Desktop values */
+      background-color: #87CEEB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .column-cap p, .column-base p, .textcenter p {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    .column-body {
+      flex: 1;
+      background: repeating-linear-gradient(
+        to right,
+        #87CEEB 0%,
+        #87CEEB 25%,
+        #f8ca3c 25%,
+        #f8ca3c 50%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+    }
+    .image-square {
+      width: 100px;
+      height: 100px;
+      background-color: #fff;
+      border: 2px solid #000;
+      margin: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .image-square img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .slideshow-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    .double-border {
+      border: 4px solid #f8ca3c;
+      box-shadow: 0 0 0 4px #87CEEB;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .nav-button {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+      background-color: #ccc;
+      border-radius: 50%;
+      line-height: 30px;
+      font-size: 14px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .nav-button.active {
+      background-color: #3498db;
+    }
+
+    /* Container that wraps everything on a small screen */
+    .small-content {
+      /* Desktop may have different styling – now we override for mobile */
+    }
+
+    /* --- Mobile (phone) adjustments --- */
+    @media (max-width: 600px) {
+      /* Arrange everything in a column */
+      .small-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5vw;
+        gap: 3vh;
+      }
+      /* Make both doric columns full width (or near full width) */
+      .left.doric-column, .right.doric-column {
+        width: 90vw;
+        /* Optionally reduce the height for mobile */
+        /* Adjust cap and base height relative to viewport */
+      }
+      .column-cap, .column-base {
+        height: 8vh; /* Relative to viewport height */
+      }
+      .column-cap p, .column-base p, .textcenter p {
+        font-size: 4vw;
+      }
+      /* Make the image squares larger relative to the viewport */
+      .image-square {
+        width: 30vw;
+        height: 30vw;
+      }
+      /* Adjust slideshow container width */
+      .slideshow-container {
+        width: 90vw;
+      }
+      /* Optionally adjust nav-button sizes */
+      .nav-button {
+        width: 10vw;
+        height: 10vw;
+        line-height: 10vw;
+        font-size: 3vw;
+      }
+      /* Optionally, adjust the double-border content-div padding */
+      .double-border.content-div {
+        padding: 5vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="small-content">
+    <!-- Top: Left Doric Column becomes the "Before" column at the top -->
+    <div class="left doric-column">
+      <div class="column-cap textcenter">
+        <p>Before</p>
+      </div>
+      <div class="column-body imaginethat">
+        <div class="image-square">
+          <img src="/imagejpeg_0.jpg" alt="Before Image 1">
+        </div>
+        <div class="image-square">
+          <img src="/before.jpg" alt="Before Image 2">
+        </div>
+        <div class="image-square">
+          <img src="/DeckRestorationBefore.jpeg" alt="Before Image 3">
+        </div>
+      </div>
+      <div class="column-base"></div>
+    </div>
+
+    <!-- Middle: Slideshow Container -->
+    <div class="slideshow-container">
+      <div class="double-border content-div slide active" data-index="0">
+        <button class="new-line nav-button" data-index="0">
+          <span>About</span>
+        </button>
+        <button class="new-line nav-button" data-index="1">
+          <span>Gallery</span>
+        </button>
+        <button class="new-line nav-button" data-index="2">
+          <span>Testimony</span>
+        </button>
+        <button class="new-line nav-button" data-index="3">
+          <span>Services</span>
+        </button>
+        <button class="new-line nav-button" data-index="4">
+          <span>Contact</span>
+        </button>
+      </div>
+      <!-- Other slides omitted for brevity (assume similar structure) -->
+    </div>
+
+    <!-- Bottom: Right Doric Column becomes the "After" column at the bottom -->
+    <div class="right doric-column">
+      <div class="column-cap textcenter">
+        <p>After</p>
+      </div>
+      <div class="column-body imaginethat">
+        <div class="image-square">
+          <img src="/imagejpeg_02.jpg" alt="After Image 1">
+        </div>
+        <div class="image-square">
+          <img src="/after.jpg" alt="After Image 2">
+        </div>
+        <div class="image-square">
+          <img src="/DeckRestorationAfter.jpeg" alt="After Image 3">
+        </div>
+      </div>
+      <div class="column-base"></div>
+    </div>
+  </div>
+</body>
+</html>
